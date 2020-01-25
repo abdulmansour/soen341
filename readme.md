@@ -1,11 +1,21 @@
-# soen341
+# soen341 Section UUUB Group UB10
 [Sprint 1](https://docs.google.com/spreadsheets/d/1gs0IDbbtNSP9LggcaedKTVtoTRCYKRJFTi9f7vs37ng/edit#gid=0)
 
 Team Members:
 ```
 Abdulrahim Mansour - abdulmansour
 Tommy Soucy - TommySoucy
+Ahmed Al-Naseri - Ahmed-alnaseri
+Mark Said - marksman1298
 
+Objective:
+The group is tasked with implementing a simplified version of Instagram. The team will collaborate to build this project to meet the
+guidlines of the S/W process learned in class. The team was provided with 3 core features to which more sub-features will be added.
+
+Core Features:
+-Posting a picture with text description
+-Following a user
+-Leave comments to a posted picture
 ```
 Framework/Language: Laravel/PHP
 
