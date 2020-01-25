@@ -4,7 +4,7 @@
 [mac](https://www.apachefriends.org/xampp-files/7.3.13/xampp-osx-7.3.13-0-installer.dmg)
 [windows](https://www.apachefriends.org/xampp-files/7.3.13/xampp-windows-x64-7.3.13-0-VC15-installer.exe)
 
-2. [Environment Setup](https://medium.com/laravel-power-devs/collaborative-development-with-laravel-f32a84040677):
+2. [Environment Setup](https://medium.com/laravel-power-devs/collaborative-development-with-laravel-f32a84040677)
 
 3. Run the following commands outside …/htdocs/soen341:
 ```
