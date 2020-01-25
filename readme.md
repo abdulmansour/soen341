@@ -7,9 +7,8 @@
 2. Follow [Environment set-up](https://medium.com/laravel-power-devs/collaborative-development-with-laravel-f32a84040677):
 
 3. Run the following commands outside …/htdocs/soen341:
-
+```
 sudo chmod 777 Applications/XAMPP/xamppfiles/htdocs/soen341/storage/logs
-
 sudo chmod 777 Applications/XAMPP/xamppfiles/htdocs/soen341/storage/framework/views
-
 sudo chmod 777 Applications/XAMPP/xamppfiles/htdocs/soen341/storage/framework/sessions
+```
