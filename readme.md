@@ -7,7 +7,7 @@ Abdulrahim Mansour - abdulmansour
 ```
 Framework/Language: Laravel/PHP
 
-## SETUP:
+## Setup:
 
 1. Download, Install and Run XAMPP: 
 [mac](https://www.apachefriends.org/xampp-files/7.3.13/xampp-osx-7.3.13-0-installer.dmg)
