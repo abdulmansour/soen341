@@ -1,6 +1,6 @@
 # soen341
 
-1. Download XAMPP: 
+1. Download, Install and Run XAMPP: 
 [mac](https://www.apachefriends.org/xampp-files/7.3.13/xampp-osx-7.3.13-0-installer.dmg)
 [windows](https://www.apachefriends.org/xampp-files/7.3.13/xampp-windows-x64-7.3.13-0-VC15-installer.exe)
 
