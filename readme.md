@@ -4,6 +4,7 @@
 Team Members:
 ```
 Abdulrahim Mansour - abdulmansour
+Tommy Soucy - TommySoucy
 
 ```
 Framework/Language: Laravel/PHP
