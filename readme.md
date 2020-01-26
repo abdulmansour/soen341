@@ -19,9 +19,9 @@ guidlines of the S/W process learned in class. The team was provided with 3 core
 
 
 ## Core Features:
--Posting a picture with text description
--Following a user
--Leave comments to a posted picture
+* Posting a picture with text description
+* Following a user
+* Leave comments to a posted picture
 
 ## Setup:
 
