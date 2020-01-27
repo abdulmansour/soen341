@@ -8,8 +8,6 @@ Tommy Soucy - TommySoucy
 Ahmed Al-Naseri - Ahmed-alnaseri
 Mark Said - marksman1298
 
-
-
 ```
 Framework/Language: Laravel/PHP
 
