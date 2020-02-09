@@ -14,14 +14,6 @@ class PagesController extends Controller
         return view('pages.index')->with($data);
     }
 
-    public function services() {
-        $data = array(
-            'title' => 'Services',
-            'services' => ['Web Design', 'Programming', 'SEO']
-        );
-        return view('pages.services')->with($data);
-    }
-
     public function profile() {
         $user_id = 1;
         $posts = Post::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
