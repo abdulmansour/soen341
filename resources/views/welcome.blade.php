@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Soen341_Instagram
+                    dev
                 </div>
 
                 <div class="links">
