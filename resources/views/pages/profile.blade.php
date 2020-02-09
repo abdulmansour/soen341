@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Profile of User {{$user_id}}</h1>
+<h1>Profile of User {{$user->id}}</h1>
 @if (count($posts) > 0) 
     @foreach ($posts as $post)
         <div class="card">

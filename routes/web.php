@@ -28,4 +28,8 @@ Route::get('/profile', 'PagesController@profile');
 Route::get('/login', 'PagesController@index');
 Route::get('/register', 'PagesController@index');
 
+//all routes for posts
 Route::resource('posts', 'PostsController');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
