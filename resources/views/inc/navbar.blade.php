@@ -6,13 +6,14 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="posts">Posts<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+        <!-- <li class="nav-item">
                 <a class="nav-link" href="services">Services</a>
             </li>
+        -->
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="profile">Profile</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">    
