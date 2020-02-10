@@ -28,6 +28,5 @@ Route::get('/profile', 'PagesController@profile');
 
 //all routes for posts
 Route::resource('posts', 'PostsController');
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

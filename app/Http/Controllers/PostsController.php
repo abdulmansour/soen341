@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -25,7 +26,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -36,7 +37,27 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'=>'required' ,
+            'body'=>'required',
+            'image' => 'required'
+        ]);
+
+        //if no errors => Create Post
+        $user = Auth::user();
+        if (is_null($user)) {
+            //if user is not logged in, redirect the user to the login page
+            return redirect('login/')->with('error', 'Login Required');
+        }
+        
+        $post = new Post;
+        $post->user_id = $user->id;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body'); 
+        $post->image = $request->input('image');
+        $post->save();
+    
+        return redirect('posts/')->with('success', 'Post Created');
     }
 
     /**

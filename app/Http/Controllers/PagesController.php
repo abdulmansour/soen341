@@ -24,7 +24,7 @@ class PagesController extends Controller
         }
 
         //if user is not logged in, redirect the user to the login page
-        return view('auth.login');
+        return redirect('login')->with('error', 'Login Required');
     }
 
     public function about() {
