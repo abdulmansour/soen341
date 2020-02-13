@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,26 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function users()
+    {
+        $users = User::get();
+        return view('users', compact('users'));
+    }
+
+    public function user($id)
+    {
+        $user = User::find($id);
+        return view('usersView', compact('user'));
+    }
+
+    public function followUserRequest($id){
+
+        $user = User::find($id);
+        $response = auth()->user()->toggleFollow($user);
+
+
+        return $user->username;
+    }
+
 }

@@ -11,10 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+Routing examples:
+
+//dynamic route:
+Route::get('/users/{id}/{name}', function($id, $name) {
+    return 'This is user '.$name.' with id '.$id;
 });
 
-Auth::routes();
+*/
 
+Route::get('/', 'PagesController@index');
+Route::get('/index', 'PagesController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/profile', 'PagesController@profile');
+Route::get('/users', 'PagesController@users')->name('users');
+
+//all routes for posts
+Route::resource('posts', 'PostsController');
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//routes for users and follow
+Route::get('user/{id}', 'HomeController@user')->name('user.view');
+Route::post('/follow/{id}', 'HomeController@followUserRequest')->name('follow');
+
