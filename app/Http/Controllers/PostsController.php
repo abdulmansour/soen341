@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use Auth;
 
 class PostsController extends Controller
@@ -16,6 +17,10 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderby('created_at', 'desc')->paginate(10);
+        foreach($posts as $post) {
+            $user = User::find($post->user_id);
+            $post->user = $user;
+        }
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -40,7 +45,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title'=>'required' ,
             'body'=>'required',
-            'image' => 'required'
+            'image' => 'image|required|max:1999'
         ]);
 
         //if no errors => Create Post
@@ -50,12 +55,27 @@ class PostsController extends Controller
             return redirect('login/')->with('error', 'Login Required');
         }
         
+        //Create post
         $post = new Post;
         $post->user_id = $user->id;
         $post->title = $request->input('title');
         $post->body = $request->input('body'); 
-        $post->image = $request->input('image');
+        
+        //Handle image storage
+        $filenameWithExt = $request->file('image')->getClientOriginalName();
+        //filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //ext
+        $ext = $request->file('image')->getClientOriginalExtension();
+        //to make file unique => add the current timestamp
+        $filenameToStore = $filename.'_'.time().'.'.$ext;
+        $post->image = $filenameToStore;
+        //save
         $post->save();
+
+        //upload image in 'public/images' folder
+        $path = $request->file('image')->storeAs('public/images', $filenameToStore);
+
     
         return redirect('posts/')->with('success', 'Post Created');
     }
@@ -69,6 +89,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $user = User::find($post->user_id);
+        $post->user = $user;
         return view('posts.show')->with('post', $post);
     }
 
