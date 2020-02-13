@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use App\User;
+
 
 class PagesController extends Controller
 {
@@ -30,6 +32,12 @@ class PagesController extends Controller
     public function about() {
         $title = 'About';
         return view('pages.about')->with('title', $title);
+    }
+
+    public function users()
+    {
+        $users = User::get();
+        return view('users', compact('users'));
     }
 
 }
