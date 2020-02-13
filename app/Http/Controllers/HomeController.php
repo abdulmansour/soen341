@@ -48,8 +48,13 @@ class HomeController extends Controller
         $user = User::find($id);
         $url =$request->input('url');
         $response = auth()->user()->toggleFollow($user);
-
-        return redirect("$url")->with('success', "Success");
+        $followunfollow = "";
+        if(auth()->user()->isFollowing($user)){
+            $followOrUnfollow = "following";
+        }else{
+            $followOrUnfollow = "unfollowing";
+        }      
+        return redirect("$url")->with('success', "You are now $followOrUnfollow $user->name");
     }
 
 }
