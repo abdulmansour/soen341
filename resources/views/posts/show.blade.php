@@ -5,6 +5,9 @@
         <div class="card-header">
             <h3 class="card-title">
                 {{$post->title}}
+                @if ($post->user_id == Auth::user()->id)
+                    <a href="/soen341/public/posts/{{$post->id}}/edit"><button  class="btn btn-default" style="float: right;">Edit</button></a>
+                @endif
             </h3>
         </div>
         <div class="card-body">
