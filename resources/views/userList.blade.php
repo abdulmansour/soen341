@@ -7,15 +7,28 @@
                 <small>Following: <span class="badge badge-primary">{{ $user->followings()->get()->count() }}</span></small>
                 <small>Followers: <span class="badge badge-primary tl-follower">{{ $user->followers()->get()->count() }}</span></small>
             </p>
-            @if(auth()->user()->isFollowing($user))
+     <form method="POST" action="{{ route('followToggle') }}">
+        <div class="form-group">
+            @csrf            
+            <input name="id" type="hidden" class="form-control" value="{{$user->id}}"/>
+        </div>
+        <div class="form-group">
+            @csrf            
+            <input name="url" type="hidden" class="form-control" value="{{Request::url()}}"/>
+        </div>        
+
+        <button type="submit" class="btn btn-primary">
+        @if(auth()->user()->isFollowing($user))
                 UnFollow
             @else
                 Follow
-            @endif
-            
-            <follow-button-component user-id="{{ $user->id }}" current-user-id="{{ auth()->user()->id}}" >
+        @endif   
+        </button>
+    </form>
+         
 
-            </follow-button-component>
+
+
         </div>
     @endforeach
 @endif 

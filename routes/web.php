@@ -35,4 +35,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //routes for users and follow
 Route::get('user/{id}', 'HomeController@user')->name('user.view');
 Route::post('/follow/{id}', 'HomeController@followUserRequest')->name('follow');
+Route::post('/follow', 'HomeController@followUserRequest')->name('followToggle');
 
