@@ -30,3 +30,9 @@ Route::get('/profile', 'PagesController@profile');
 Route::resource('posts', 'PostsController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//routes for users and follow
+Route::get('users', 'HomeController@users')->name('users');
+Route::get('user/{id}', 'HomeController@user')->name('user.view');
+Route::post('/follow/{id}', 'HomeController@followUserRequest')->name('follow');
+
