@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 use App\Post;
 use App\User;
 use Auth;
@@ -150,9 +149,7 @@ class PostsController extends Controller
             //save
             
             //update image in 'public/images' folder by deleting old and uploading new
-            if(File::exists($old_image)) {
-                File::delete($old_image);
-            }
+            Storage::delete('public/images/'.$old_image);
             $path = $request->file('image')->storeAs('public/images', $filenameToStore);
         }
 
@@ -168,6 +165,14 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        if ($post !== null) {
+            if($post->image != null){
+                // Delete Image
+                Storage::delete('public/images/'.$post->image);
+            }
+            $post->delete();
+        }
+        return redirect('/posts')->with('success', 'Post Removed');
     }
 }
