@@ -3,7 +3,7 @@
 
         @if(Auth::user())
             <a class="navbar-brand" href="/soen341/public/user/{{Auth::user()->id}}">
-                 Welcome {{ Auth::user()->name}}!
+                 Master
             </a>
         @else
             <a class="navbar-brand" href="{{ url('/') }}">

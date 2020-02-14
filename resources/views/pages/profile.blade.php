@@ -1,13 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Profile of User {{$user->id}}</h1>
+<h1>{{$user->name}}</h1>
 @if (count($posts) > 0) 
     @foreach ($posts as $post)
-        <div class="card">
-            <h3>{{$post->title}}</h3>
-            <small>Written on {{$post->created_at}}</small>
+    <div class="card" style="width: 40rem">
+        <div class="card-header">
+            <h3 class="card-title">
+                <a href="/soen341/public/posts/{{$post->id}}">
+                    {{$post->title}}
+                </a>
+            </h3>
         </div>
+        <div class="card-body">
+            <a href="/soen341/public/posts/{{$post->id}}">
+                <img class="card-img-top" src="/soen341/storage/app/public/images/{{$post->image}}">
+            </a>
+            <p class="card-text">{{$post->body}}</p>
+        </div>
+        <footer class="blockquote-footer">Written by {{$user->name}} on {{$post->created_at}}</footer>
+    </div>
     @endforeach
 @else 
     <p>No posts found!</p>

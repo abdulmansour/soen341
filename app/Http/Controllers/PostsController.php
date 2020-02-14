@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\User;
 use Auth;
 
 class PostsController extends Controller
@@ -16,6 +18,10 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderby('created_at', 'desc')->paginate(10);
+        foreach($posts as $post) {
+            $user = User::find($post->user_id);
+            $post->user = $user;
+        }
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -40,7 +46,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title'=>'required' ,
             'body'=>'required',
-            'image' => 'required'
+            'image' => 'image|required|max:1999'
         ]);
 
         //if no errors => Create Post
@@ -50,12 +56,27 @@ class PostsController extends Controller
             return redirect('login/')->with('error', 'Login Required');
         }
         
+        //Create post
         $post = new Post;
         $post->user_id = $user->id;
         $post->title = $request->input('title');
         $post->body = $request->input('body'); 
-        $post->image = $request->input('image');
+        
+        //Handle image storage
+        $filenameWithExt = $request->file('image')->getClientOriginalName();
+        //filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //ext
+        $ext = $request->file('image')->getClientOriginalExtension();
+        //to make file unique => add the current timestamp
+        $filenameToStore = $filename.'_'.time().'.'.$ext;
+        $post->image = $filenameToStore;
+        //save
         $post->save();
+
+        //upload image in 'public/images' folder
+        $path = $request->file('image')->storeAs('public/images', $filenameToStore);
+
     
         return redirect('posts/')->with('success', 'Post Created');
     }
@@ -69,6 +90,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $user = User::find($post->user_id);
+        $post->user = $user;
         return view('posts.show')->with('post', $post);
     }
 
@@ -80,7 +103,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -92,7 +116,45 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title'=>'min:1' ,
+            'body'=>'min:1',
+        ]);
+
+        //if no errors => Create Post
+        $user = Auth::user();
+        if (is_null($user)) {
+            //if user is not logged in, redirect the user to the login page
+            return redirect('login/')->with('error', 'Login Required');
+        }
+        
+        //Create post
+        $post = Post::find($id);
+        $old_image = $post->image;
+
+        $post->user_id = $user->id;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body'); 
+        
+        if (null !== $request->file('image')) {
+            //Handle image storage
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            //filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //ext
+            $ext = $request->file('image')->getClientOriginalExtension();
+            //to make file unique => add the current timestamp
+            $filenameToStore = $filename.'_'.time().'.'.$ext;
+            $post->image = $filenameToStore;
+            //save
+            
+            //update image in 'public/images' folder by deleting old and uploading new
+            Storage::delete('public/images/'.$old_image);
+            $path = $request->file('image')->storeAs('public/images', $filenameToStore);
+        }
+
+        $post->save();
+        return redirect('posts/')->with('success', 'Post Updated');
     }
 
     /**
@@ -103,6 +165,14 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        if ($post !== null) {
+            if($post->image != null){
+                // Delete Image
+                Storage::delete('public/images/'.$post->image);
+            }
+            $post->delete();
+        }
+        return redirect('/posts')->with('success', 'Post Removed');
     }
 }
