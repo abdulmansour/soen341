@@ -40,4 +40,26 @@ class PagesController extends Controller
         return view('users', compact('users'));
     }
 
+    public function feed()
+    {
+
+        $user = Auth::user();
+
+        if (!is_null($user)) {
+
+            $userIdsOfFollowings = $user->followings()->pluck('id')->toArray();
+            //uncomment below if we want to see the posts of the current user as well in the feed
+            //$posts = Post::whereIn('user_id', $userIdsOfFollowings)->orWhere('user_id', $user->id)->orderBy('created_at', 'DESC')->get(); 
+            $posts = Post::whereIn('user_id', $userIdsOfFollowings)->orderBy('created_at', 'DESC')->get(); 
+            foreach($posts as $post) {
+                $user = User::find($post->user_id);
+                $post->user = $user;
+            }
+            return view('pages.feed', compact('posts'));
+        }
+
+        //if user is not logged in, redirect the user to the login page
+        return redirect('login')->with('error', 'Login Required');
+    }
+
 }

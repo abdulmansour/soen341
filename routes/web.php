@@ -26,6 +26,8 @@ Route::get('/index', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/users', 'PagesController@users')->name('users');
+Route::get('/feed', 'PagesController@feed');
+
 
 //all routes for posts
 Route::resource('posts', 'PostsController');
