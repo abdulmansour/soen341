@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Route;
+use App\Post;
 
 
 class HomeController extends Controller
@@ -55,6 +56,15 @@ class HomeController extends Controller
             $followOrUnfollow = "unfollowing";
         }      
         return redirect("$url")->with('success', "You are now $followOrUnfollow $user->name");
+    }
+
+    public function likePost(Request $request){
+
+        $url =$request->input('url');
+        $post = Post::find($request->id);
+        $response = auth()->user()->toggleLike($post);
+
+        return redirect("$url")->with('success', "Success");
     }
 
 }
