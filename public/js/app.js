@@ -37402,7 +37402,7 @@ function normalizeComponent (
       // for template-only hot-reload because in that case the render fn doesn't
       // go through the normalizer
       options._injectStyles = hook
-      // register for functioal component in vue file
+      // register for functional component in vue file
       var originalRender = options.render
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -49498,8 +49498,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('follow-button-component', __webpack_require__(/*! ./components/FollowButtonComponent.vue */ "./resources/js/components/FollowButtonComponent.vue")["default"]);
 /**
@@ -49635,7 +49635,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nValidationError: Invalid options object. Sass Loader has been initialized using an options object that does not match the API schema.\n - options has an unknown property 'outputStyle'. These properties are valid:\n   object { implementation?, sassOptions?, prependData?, sourceMap?, webpackImporter? }\n    at validate (C:\\xampp\\htdocs\\soen341\\node_modules\\sass-loader\\node_modules\\schema-utils\\dist\\validate.js:85:11)\n    at Object.loader (C:\\xampp\\htdocs\\soen341\\node_modules\\sass-loader\\dist\\index.js:36:28)\n    at C:\\xampp\\htdocs\\soen341\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\xampp\\htdocs\\soen341\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\xampp\\htdocs\\soen341\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at runSyncOrAsync (C:\\xampp\\htdocs\\soen341\\node_modules\\loader-runner\\lib\\LoaderRunner.js:143:3)\n    at iterateNormalLoaders (C:\\xampp\\htdocs\\soen341\\node_modules\\loader-runner\\lib\\LoaderRunner.js:232:2)\n    at C:\\xampp\\htdocs\\soen341\\node_modules\\loader-runner\\lib\\LoaderRunner.js:205:4\n    at C:\\xampp\\htdocs\\soen341\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:79:11)");
 
 /***/ }),
 
@@ -49646,8 +49646,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/soen341/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/soen341/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\soen341\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\soen341\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
