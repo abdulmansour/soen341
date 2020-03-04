@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 use Auth;
+use Crew\Unsplash\HttpClient;
+use Crew\Unsplash\Search;
 
 class PostsController extends Controller
 {
@@ -18,10 +20,52 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderby('created_at', 'desc')->paginate(10);
+        //generate keyword to search image
+        $keywords = "";
+        foreach($posts as $post) {
+            $keywords = $keywords.$post->title." ".$post->body." ";
+        }
+        $keywords = preg_replace("/[^A-Za-z0-9 ]/", '', $keywords);
+        $frequency = array_count_values(str_word_count($keywords, 1));
+
+        foreach($frequency as $word => $count) {
+            if(strlen($word) <= 3) {
+                unset($frequency[$word]);
+            }
+        }
+
         foreach($posts as $post) {
             $user = User::find($post->user_id);
             $post->user = $user;
+            //ad
+            HttpClient::init([
+                'applicationId'	=> 'k94HahQpfckmXieyQ8YG3102_niEO6MIOzv8rYNCeL0',
+                'secret'		=> 'WqVHir9nBV7EyFZr8QRFKfqMHnK499B70GxsqaNcV68',
+                'callbackUrl'	=> 'https://google.com',
+                'utmSource' => 'soen341_ads'
+            ]);
+            $scopes = ['public'];
+            HttpClient::$connection->getConnectionUrl($scopes);
+            //search ad
+            
+            $most_frequent = array_keys($frequency, max($frequency))[0];
+            unset($frequency[$most_frequent]);
+
+            $search = $most_frequent;
+            $page = 1;
+            $per_page = 10;
+            
+            $ads = Search::photos($search, $page, $per_page);
+            $results = $ads->getResults();
+            $ad = $results[rand(0,$per_page-1)];
+            $ad_description = $ad['description'];
+            $ad_image_url = $ad['urls']['small'];
+
+            $post->ad_search_word = $most_frequent;
+            $post->ad_description = $ad_description;
+            $post->ad_image_url = $ad_image_url;
         }
+
         return view('posts.index')->with('posts', $posts);
     }
 
