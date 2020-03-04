@@ -32,12 +32,12 @@
                                     </h3>
                                 </div>
                                 <div class="card-body">
-                                    <a href="#">
+                                    <a>
                                         <!--<img class="card-img-top" src="/soen341/storage/app/public/images/ad.png"> -->
                                         <?php
                                             $image = $post->ad_image_url;
                                             $imageData = base64_encode(file_get_contents($image));
-                                            echo '<img class="card-img-top" src="data:image/jpeg;base64,'.$imageData.'">';
+                                            echo '<img class="card-img-top" src="data:image/jpeg;base64,'.$imageData.'" style="width: 100%; height: 15vw; object-fit: cover ">';
                                         ?>
                                     </a>
                                     <p class="card-text"></p>
