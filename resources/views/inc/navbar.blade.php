@@ -29,6 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/soen341/public/users/">Users</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/soen341/public/feed/">Feed</a>
+                </li>
 
                 @endif
 

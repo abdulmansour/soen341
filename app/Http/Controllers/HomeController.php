@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Route;
+
 
 class HomeController extends Controller
 {
@@ -39,13 +41,20 @@ class HomeController extends Controller
         return view('usersView', compact('user'));
     }
 
-    public function followUserRequest($id){
+    public function followUserRequest(Request $request){
+
+        $id = $request->input('id');
 
         $user = User::find($id);
+        $url =$request->input('url');
         $response = auth()->user()->toggleFollow($user);
-
-
-        return $user->username;
+        $followunfollow = "";
+        if(auth()->user()->isFollowing($user)){
+            $followOrUnfollow = "following";
+        }else{
+            $followOrUnfollow = "unfollowing";
+        }      
+        return redirect("$url")->with('success', "You are now $followOrUnfollow $user->name");
     }
 
 }
