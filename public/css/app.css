@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -319,6 +319,13 @@ fieldset {
   margin: 0;
   border: 0;
 }
+
+.author-time{
+    font-size: 11px;
+    font-style: italic;
+    color: #aaa;
+}
+
 
 legend {
   display: block;

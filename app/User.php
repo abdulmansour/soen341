@@ -7,11 +7,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Laravelista\Comments\Commenter;
 
 
 class User extends Authenticatable
 {
-    use Notifiable, CanFollow, CanBeFollowed;
+    use Notifiable, CanFollow, CanBeFollowed, Commenter;
     /**
      * The attributes that are mass assignable.
      *

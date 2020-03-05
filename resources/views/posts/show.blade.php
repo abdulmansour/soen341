@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="card" style="width: 40rem">
         <div class="card-header">
@@ -24,6 +25,9 @@
                 </div>
             @endif
         </footer>
-        
+
+    </div>
+    <div>
+        @comments(['model' => $post])
     </div>
 @endsection
