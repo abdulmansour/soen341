@@ -15,7 +15,8 @@
         "laravel/ui": "^1.2",
         "laravelcollective/html": "^6.0",
         "laravelista/comments": "^3.3",
-        "overtrue/laravel-follow": "^1.1"
+        "overtrue/laravel-follow": "^1.1",
+        "unsplash/unsplash": "^2.5"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
