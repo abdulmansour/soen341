@@ -21,15 +21,17 @@ class PostsController extends Controller
     {
         $posts = Post::orderby('created_at', 'desc')->paginate(10);
         //generate keyword to search image
-        $keywords = "";
+        $keywords = ""; 
         foreach($posts as $post) {
             $keywords = $keywords.$post->title." ".$post->body." ";
         }
-        $keywords = preg_replace("/[^A-Za-z0-9 ]/", '', $keywords);
+        $keywords = strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $keywords));
         $frequency = array_count_values(str_word_count($keywords, 1));
 
+        $pronouns = "all another any anybody anyone anything as aught both each each other either enough everybody everyone everything few he her hers herself him himself his I idem it its itself many me mine most my myself naught neither no one nobody none nothing nought one one another other others ought our ours ourself ourselves several she some somebody someone something somewhat such suchlike that thee their theirs theirself theirselves them themself themselves there these they thine this those thou thy thyself us we what whatever whatnot whatsoever whence where whereby wherefrom wherein whereinto whereof whereon wherever wheresoever whereto whereunto wherewith wherewithal whether which whichever whichsoever who whoever whom whomever whomso whomsoever whose whosever whosesoever whoso whosoever ye yon yonder you your yours yourself yourselves";
+
         foreach($frequency as $word => $count) {
-            if(strlen($word) <= 3) {
+            if(strlen($word) <= 3 || strpos($pronouns, $word) !== false) {
                 unset($frequency[$word]);
             }
         }
