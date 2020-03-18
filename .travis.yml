@@ -11,7 +11,7 @@ addons:
   
 before_script:
   - cp .env.travis .env
-  - cp .env.dusk.local .env
+  - cp .env.example .env.dusk.local
   - mysql -e 'create database laravel;'
   - composer self-update
   - composer install --no-interaction
