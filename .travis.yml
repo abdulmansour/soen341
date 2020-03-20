@@ -21,5 +21,4 @@ before_script:
   
 script:
   - vendor/bin/phpunit
-  - php artisan serve &
   - php artisan dusk
