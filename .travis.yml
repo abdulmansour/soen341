@@ -20,7 +20,7 @@ before_script:
   - php artisan dusk:chrome-driver
   - php artisan key:generate
   - cp .env .env.dusk.local
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=8000 http://localhost &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
   
 script:
