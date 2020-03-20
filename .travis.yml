@@ -8,16 +8,20 @@ services:
   
 addons:
   chrome: stable
-  
-before_script:
+ 
+install:
   - cp .env.travis .env
-  - mysql -e 'create database laravel;'
   - composer self-update
-  - composer install --no-interaction
+  - travis-retry composer install --no-interaction --prefer-dist --no-suggest
+  - 
+ 
+before_script:
+  - mysql -e 'create database laravel;'
   - php artisan dusk:chrome-driver
   - php artisan key:generate
   - cp .env .env.dusk.local
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=8000 http://localhost &
+  - php artisan serve &
   
 script:
   - vendor/bin/phpunit
