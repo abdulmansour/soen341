@@ -29,11 +29,7 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('/soen341/public/posts/create')
-					->assertUrlIs('test')
-                    ->type('title','Test title')
-                    ->type('body','Test body')
-					->press('Submit')
-					->assertSee('The image field is required.');
+					->assertUrlIs('test');
 					
         });
     }
