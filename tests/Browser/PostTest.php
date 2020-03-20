@@ -28,8 +28,11 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
-					->assertUrlIs('test');
+            $browser->visit('http://localhost/soen341/public/posts/create')
+                    ->type('title','Test title')
+                    ->type('body','Test body')
+					->press('Submit')
+					->assertSee('The image field is required.');
 					
         });
     }
@@ -41,7 +44,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('http://localhost/soen341/public/posts/create')
                     ->type('title','Test title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -57,7 +60,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('http://localhost/soen341/public/posts/create')
                     ->type('body','Test body')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -73,7 +76,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('http://localhost/soen341/public/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
@@ -95,11 +98,11 @@ class PostTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user) {
 			
-            $browser->visit('/soen341/public/login')
+            $browser->visit('http://localhost/soen341/public/login')
 					->type('email',$user->email)
 					->type('password','password')
 					->press('Login')
-					->visit('/soen341/public/posts/create')
+					->visit('http://localhost/soen341/public/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
