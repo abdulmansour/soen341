@@ -22,15 +22,30 @@ class PostTest extends DuskTestCase
     }
 	
     /**
+     * Ensures travis works
+     */
+    public function testTravis()
+    {
+		fwrite(STDERR, '.env App URL is: '.env('APP_URL'));
+		fwrite(STDERR, '.env App key is: '.env('APP_KEY'));
+		
+        $this->browse(function (Browser $browser) {
+			
+            $browser->visit('')->dump()
+					->visit('/soen341')->dump()
+					->visit('/soen341/public')->dump();
+					
+        });
+    }
+	
+    /**
      * Ensures we cant post if don't have an image
      */
     public function testCantPostWithoutImage()
     {
-		fwrite(STDERR, 'App URL is: '.env('APP_URL'));
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('/soen341/public/posts/create')
-					->assertUrlIs('test')
                     ->type('title','Test title')
                     ->type('body','Test body')
 					->press('Submit')
