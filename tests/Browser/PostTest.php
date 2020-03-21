@@ -22,28 +22,15 @@ class PostTest extends DuskTestCase
     }
 	
     /**
-     * Ensures travis works
-     */
-    public function testTravis()
-    {
-		fwrite(STDERR, '.env App URL is: '.env('APP_URL'));
-		fwrite(STDERR, '.env App key is: '.env('APP_KEY'));
-		
-        $this->browse(function (Browser $browser) {
-			
-            $browser->visit('')->dump();
-					
-        });
-    }
-	
-    /**
      * Ensures we cant post if don't have an image
      */
     public function testCantPostWithoutImage()
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('')
+					->clickLink('Posts')
+					->clickLink('Create Post')
                     ->type('title','Test title')
                     ->type('body','Test body')
 					->press('Submit')
@@ -59,7 +46,9 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('')
+					->clickLink('Posts')
+					->clickLink('Create Post')
                     ->type('title','Test title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -75,7 +64,9 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('')
+					->clickLink('Posts')
+					->clickLink('Create Post')
                     ->type('body','Test body')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -91,7 +82,9 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/soen341/public/posts/create')
+            $browser->visit('')
+					->clickLink('Posts')
+					->clickLink('Create Post')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
@@ -113,11 +106,12 @@ class PostTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user) {
 			
-            $browser->visit('/soen341/public/login')
+            $browser->visit('/login')
 					->type('email',$user->email)
 					->type('password','password')
 					->press('Login')
-					->visit('/soen341/public/posts/create')
+					->clickLink('Posts')
+					->clickLink('Create Post')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
