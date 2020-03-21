@@ -28,7 +28,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('http://127.0.0.1:9222/soen341/public/posts/create')
+            $browser->visit('/soen341/public/posts/create')
 					->assertUrlIs('test')
                     ->type('title','Test title')
                     ->type('body','Test body')
@@ -45,7 +45,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('http://127.0.0.1:9222/soen341/public/posts/create')
+            $browser->visit('/soen341/public/posts/create')
                     ->type('title','Test title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -61,7 +61,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('http://127.0.0.1:9222/soen341/public/posts/create')
+            $browser->visit('/soen341/public/posts/create')
                     ->type('body','Test body')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -77,7 +77,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('http://127.0.0.1:9222/soen341/public/posts/create')
+            $browser->visit('/soen341/public/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
@@ -99,11 +99,11 @@ class PostTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user) {
 			
-            $browser->visit('http://127.0.0.1:9222/soen341/public/login')
+            $browser->visit('/soen341/public/login')
 					->type('email',$user->email)
 					->type('password','password')
 					->press('Login')
-					->visit('http://127.0.0.1:9222/soen341/public/posts/create')
+					->visit('/soen341/public/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
