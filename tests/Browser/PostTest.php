@@ -28,7 +28,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')
+            $browser->visit('')->dump()
 					->clickLink('Posts')
 					->clickLink('Create Post')
                     ->type('title','Test title')
