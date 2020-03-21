@@ -31,9 +31,7 @@ class PostTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')->dump()
-					->visit('/soen341')->dump()
-					->visit('/soen341/public')->dump();
+            $browser->visit('')->dump();
 					
         });
     }
