@@ -26,6 +26,7 @@ class PostTest extends DuskTestCase
      */
     public function testCantPostWithoutImage()
     {
+		fwrite(STDERR, 'App URL is: '.env('APP_URL'));
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('/soen341/public/posts/create')
