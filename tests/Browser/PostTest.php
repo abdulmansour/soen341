@@ -28,8 +28,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')
-					->visit('/soen341/public/posts')->dump();
+            $browser->visit('')->assertUrlIs('');
 					
         });
     }
