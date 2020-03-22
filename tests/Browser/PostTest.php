@@ -28,9 +28,9 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')->dump()
-					->clickLink('Posts')
-					->clickLink('Create Post')
+            $browser->visit('')
+					->click('Posts')
+					->click('Create Post')
                     ->type('title','Test title')
                     ->type('body','Test body')
 					->press('Submit')
@@ -47,8 +47,8 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->clickLink('Posts')
-					->clickLink('Create Post')
+					->click('Posts')
+					->click('Create Post')
                     ->type('title','Test title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -65,8 +65,8 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->clickLink('Posts')
-					->clickLink('Create Post')
+					->click('Posts')
+					->click('Create Post')
                     ->type('body','Test body')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -83,8 +83,8 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->clickLink('Posts')
-					->clickLink('Create Post')
+					->click('Posts')
+					->click('Create Post')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
@@ -110,8 +110,8 @@ class PostTest extends DuskTestCase
 					->type('email',$user->email)
 					->type('password','password')
 					->press('Login')
-					->clickLink('Posts')
-					->clickLink('Create Post')
+					->click('Posts')
+					->click('Create Post')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
