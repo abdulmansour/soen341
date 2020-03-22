@@ -55,7 +55,7 @@ class CommentTest extends DuskTestCase
 					->visit('/posts/1') // go to the post's page
 					->assertSee('REPLY') // assert that user has access to reply to the comment
 					->press('REPLY') // press on reply
-					->type('#reply-text-area','Test reply') // type a reply
+					->type('#replytextarea','Test reply') // type a reply
 					->press('REPLY') // submit the comment form
 					->assertSee('Test reply'); // assert that the comment has been posted
 					
@@ -79,7 +79,7 @@ class CommentTest extends DuskTestCase
 					->visit('/posts/1') // go to the post's page
 					->assertSee('EDIT') // assert that the poster has access to edit the comment
 					->press('EDIT') // press on edit
-					->type('#edit-text-area','Edited comment') // edit the comment
+					->type('#edittextarea','Edited comment') // edit the comment
 					->press('UPDATE') // press update
 					->assertSee('Edited comment'); // assert that the comment has been correctly edited
 					

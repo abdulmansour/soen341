@@ -43,7 +43,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="message">Update your message here:</label>
-                                    <textarea required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
+                                    <textarea required id="edittextarea" class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
                                     <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="message">Enter your message here:</label>
-                                    <textarea required class="form-control" name="message" rows="3"></textarea>
+                                    <textarea required id="replytextarea" class="form-control" name="message" rows="3"></textarea>
                                     <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>
                                 </div>
                             </div>
