@@ -47,7 +47,8 @@ class CommentTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user1) {
 			
-            $browser->visit('/login') // go to login page
+            $browser->select('navbarDropdown','Logout') // log out user 0
+					->visit('/login') // go to login page
 					->type('email',$user1->email) // type in user email
 					->type('password','password') // type in user password
 					->press('Login') // press login button
@@ -66,11 +67,12 @@ class CommentTest extends DuskTestCase
      */
     public function testCommentEdit()
     {
-        $user0 = User::find(0);
+        $user0 = User::first();
 		
         $this->browse(function (Browser $browser) use ($user0) {
 			
-            $browser->visit('/login') // go to login page
+            $browser->select('navbarDropdown','Logout') // log out user 1
+					->visit('/login') // go to login page
 					->type('email',$user0->email) // type in user email
 					->type('password','password') // type in user password
 					->press('Login') // press login button
@@ -91,15 +93,10 @@ class CommentTest extends DuskTestCase
      */
     public function testCommentDelete()
     {
-        $user0 = User::find(0);
 		
-        $this->browse(function (Browser $browser) use ($user0) {
+        $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/login') // go to login page
-					->type('email',$user0->email) // type in user email
-					->type('password','password') // type in user password
-					->press('Login') // press login button
-					->visit('/posts/1') // go to the post's page
+            $browser->visit('/posts/1') // go to the post's page
 					->assertSee('DELETE') // assert that the poster has access to delete the comment
 					->click('DELETE') // click on delete
 					->assertDontSee('Edited comment'); // assert that the comment has been correctly deleted
