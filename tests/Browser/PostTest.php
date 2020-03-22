@@ -22,6 +22,19 @@ class PostTest extends DuskTestCase
     }
 	
     /**
+     * Test Travis
+     */
+    public function testCantPostWithoutImage()
+    {
+        $this->browse(function (Browser $browser) {
+			
+            $browser->visit('')
+					->assertSee('Posts');
+					
+        });
+    }
+	
+    /**
      * Ensures we cant post if don't have an image
      */
     public function testCantPostWithoutImage()
