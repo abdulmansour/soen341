@@ -47,7 +47,7 @@ class CommentTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user1) {
 			
-            $browser->select('navbarDropdown','Logout') // log out user 0
+            $browser->press('Logout') // log out user 0
 					->visit('/login') // go to login page
 					->type('email',$user1->email) // type in user email
 					->type('password','password') // type in user password
@@ -71,7 +71,7 @@ class CommentTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user0) {
 			
-            $browser->select('navbarDropdown','Logout') // log out user 1
+            $browser->press('Logout') // log out user 1
 					->visit('/login') // go to login page
 					->type('email',$user0->email) // type in user email
 					->type('password','password') // type in user password
