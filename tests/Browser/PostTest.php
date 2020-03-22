@@ -24,7 +24,7 @@ class PostTest extends DuskTestCase
     /**
      * Test Travis
      */
-    public function testCantPostWithoutImage()
+    public function testTravis()
     {
         $this->browse(function (Browser $browser) {
 			
