@@ -28,11 +28,11 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/posts/create')
-                    ->type('title','Test title')
-                    ->type('body','Test body')
-					->press('Submit')
-					->assertSee('The image field is required.');
+            $browser->visit('/posts/create') // Go to post creation page
+                    ->type('title','Test title') // type in a title
+                    ->type('body','Test body') // type in a body
+					->press('Submit') // submit the post form
+					->assertSee('The image field is required.'); // assert that the correct fail happened
 					
         });
     }
@@ -44,11 +44,11 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/posts/create')
-                    ->type('title','Test title')
-                    ->attach('image','./tests/TestImages/test.png')
-					->press('Submit')
-					->assertSee('The body field is required.');
+            $browser->visit('/posts/create') // Go to post creation page
+                    ->type('title','Test title') // type in a title
+                    ->attach('image','./tests/TestImages/test.png') // attach a test image to the form
+					->press('Submit') // submit the form
+					->assertSee('The body field is required.'); // assert that the correct fail happened
 					
         });
     }
@@ -60,11 +60,11 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/posts/create')
-                    ->type('body','Test body')
-                    ->attach('image','./tests/TestImages/test.png')
-					->press('Submit')
-					->assertSee('The title field is required.');
+            $browser->visit('/posts/create') // Go to post creation page
+                    ->type('body','Test body') // type in a body
+                    ->attach('image','./tests/TestImages/test.png') // attach a test image to the form
+					->press('Submit') // submit the form
+					->assertSee('The title field is required.'); // assert that the correct fail happened
 					
         });
     }
@@ -76,13 +76,13 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/posts/create')
-                    ->type('body','Test body')
-                    ->type('title','Test Title')
-                    ->attach('image','./tests/TestImages/test.png')
-					->press('Submit')
-					->assertPathIs('/login')
-					->assertSee('Login Required');
+            $browser->visit('/posts/create') // Go to post creation page
+                    ->type('body','Test body') // type in body
+                    ->type('title','Test Title') // type in title
+                    ->attach('image','./tests/TestImages/test.png') // attach test image to form
+					->press('Submit') // submit the form
+					->assertPathIs('/login') // assert that we have been redirected to the login page
+					->assertSee('Login Required'); // assert user has been prompt to login
 					
         });
     }
@@ -93,22 +93,22 @@ class PostTest extends DuskTestCase
     public function testPost()
     {
         $user = factory(User::class)->create([
-            'password' => bcrypt('password') // Save the encrypted
+            'password' => bcrypt('password') // Create an user with specific password "password"
         ]);
 		
         $this->browse(function (Browser $browser) use ($user) {
 			
-            $browser->visit('/login')
-					->type('email',$user->email)
-					->type('password','password')
-					->press('Login')
-					->visit('/posts/create')
-                    ->type('body','Test body')
-                    ->type('title','Test Title')
-                    ->attach('image','./tests/TestImages/test.png')
-					->press('Submit')
-					->assertPathIs('/posts')
-					->assertSee('Post Created');
+            $browser->visit('/login') // go to login page
+					->type('email',$user->email) // type in user email into email field
+					->type('password','password') // type in user password into password field
+					->press('Login') // press login button
+					->visit('/posts/create') // got to post creation page
+                    ->type('body','Test body') // type in a body
+                    ->type('title','Test Title') // type in a title
+                    ->attach('image','./tests/TestImages/test.png') // attach a test image to the form
+					->press('Submit') // submit the form
+					->assertPathIs('/posts') // assert that we have been redirected to posts page
+					->assertSee('Post Created'); // assert that the user has been prompt a post success confirmation
 					
         });
     }
