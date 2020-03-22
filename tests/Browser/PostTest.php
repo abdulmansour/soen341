@@ -29,7 +29,7 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->assertSee('Posts');
+					->click('a[href="/soen341/public/posts/"]')->dump();
 					
         });
     }
@@ -42,7 +42,7 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->click('Posts')
+					->click('a[href="/soen341/public/posts/"]')->dump()
 					->click('Create Post')
                     ->type('title','Test title')
                     ->type('body','Test body')
