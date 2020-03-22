@@ -29,7 +29,7 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->click('a[href="/soen341/public/posts/"]')->dump();
+					->visit('/soen341/public/posts')->dump();
 					
         });
     }
