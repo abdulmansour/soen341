@@ -55,7 +55,9 @@ class CommentTest extends DuskTestCase
 					->visit('/posts/1') // go to the post's page
 					->assertSee('REPLY') // assert that user has access to reply to the comment
 					->press('REPLY') // press on reply
-					->keys('textarea[required="required"]','Test reply') // type a reply
+					->keys({tab})
+					->keys({tab})
+					->keys('Test reply') // type a reply
 					->press('REPLY') // submit the comment form
 					->assertSee('Test reply'); // assert that the comment has been posted
 					
