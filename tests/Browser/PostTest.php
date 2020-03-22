@@ -28,7 +28,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('/login')->dump();
+            $browser->visit('/login');
 					
         });
     }
@@ -40,9 +40,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')
-					->click('a[href="/soen341/public/posts/"]')
-					->click('Create Post')
+            $browser->visit('/posts/create')
                     ->type('title','Test title')
                     ->type('body','Test body')
 					->press('Submit')
@@ -58,9 +56,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')
-					->click('Posts')
-					->click('Create Post')
+            $browser->visit('/posts/create')
                     ->type('title','Test title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -76,9 +72,7 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')
-					->click('Posts')
-					->click('Create Post')
+            $browser->visit('/posts/create')
                     ->type('body','Test body')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
@@ -94,14 +88,12 @@ class PostTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 			
-            $browser->visit('')
-					->click('Posts')
-					->click('Create Post')
+            $browser->visit('/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
-					->assertPathIs('/soen341/public/login')
+					->assertPathIs('/public/login')
 					->assertSee('Login Required');
 					
         });
@@ -122,13 +114,12 @@ class PostTest extends DuskTestCase
 					->type('email',$user->email)
 					->type('password','password')
 					->press('Login')
-					->click('Posts')
-					->click('Create Post')
+					->visit('/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
                     ->attach('image','./tests/testimages/test.png')
 					->press('Submit')
-					->assertPathIs('/soen341/public/posts')
+					->assertPathIs('/public/posts')
 					->assertSee('Post Created');
 					
         });
