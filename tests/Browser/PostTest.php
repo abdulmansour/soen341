@@ -41,7 +41,7 @@ class PostTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
 			
             $browser->visit('')
-					->click('a[href="/soen341/public/posts/"]')->dump()
+					->click('a[href="/soen341/public/posts/"]')
 					->click('Create Post')
                     ->type('title','Test title')
                     ->type('body','Test body')
