@@ -32,7 +32,7 @@ class CommentTest extends DuskTestCase
 					->visit('/posts/1') // go to the post's page
 					->type('message','Test comment') // type a comment
 					->press('SUBMIT') // submit the comment form
-					->assertSee('Test comment') // assert that the comment has been posted
+					->assertSee('Test comment'); // assert that the comment has been posted
 					
         });
     }
@@ -56,7 +56,7 @@ class CommentTest extends DuskTestCase
 					->click('REPLY') // click on reply
 					->type('message','Test reply') // type a reply
 					->press('REPLY') // submit the comment form
-					->assertSee('Test reply') // assert that the comment has been posted
+					->assertSee('Test reply'); // assert that the comment has been posted
 					
         });
     }
