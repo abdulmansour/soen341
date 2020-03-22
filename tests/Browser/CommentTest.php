@@ -54,11 +54,11 @@ class CommentTest extends DuskTestCase
 					->press('Login') // press login button
 					->visit('/posts/1') // go to the post's page
 					->assertSee('REPLY') // assert that user has access to reply to the comment
-					->press('REPLY') // press on reply
-					->keys({tab})
-					->keys({tab})
-					->keys('Test reply') // type a reply
-					->press('REPLY') // submit the comment form
+					->press('REPLY'); // press on reply
+					
+			document.getElementsByName('message')[1].innerHTML="Test reply"; // type the reply
+					
+			$browser->press('REPLY') // submit the comment form
 					->assertSee('Test reply'); // assert that the comment has been posted
 					
         });
