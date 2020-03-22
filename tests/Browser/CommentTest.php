@@ -54,7 +54,7 @@ class CommentTest extends DuskTestCase
 					->press('Login') // press login button
 					->visit('/posts/1') // go to the post's page
 					->assertSee('REPLY') // assert that user has access to reply to the comment
-					->click('REPLY') // click on reply
+					->press('REPLY') // press on reply
 					->type('message','Test reply') // type a reply
 					->press('REPLY') // submit the comment form
 					->assertSee('Test reply'); // assert that the comment has been posted
@@ -80,7 +80,7 @@ class CommentTest extends DuskTestCase
 					->type('message','Test comment') // type a comment
 					->press('SUBMIT') // submit the comment form
 					->assertSee('EDIT') // assert that the poster has access to edit the comment
-					->click('EDIT') // click on edit
+					->press('EDIT') // press on edit
 					->type('message','Edited comment') // edit the comment
 					->press('UPDATE') // press update
 					->assertSee('Edited comment'); // assert that the comment has been correctly edited
@@ -98,7 +98,7 @@ class CommentTest extends DuskTestCase
 			
             $browser->visit('/posts/1') // go to the post's page
 					->assertSee('DELETE') // assert that the poster has access to delete the comment
-					->click('DELETE') // click on delete
+					->press('DELETE') // press on delete
 					->assertDontSee('Edited comment'); // assert that the comment has been correctly deleted
 					
         });
