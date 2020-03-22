@@ -93,7 +93,7 @@ class PostTest extends DuskTestCase
                     ->type('title','Test Title')
                     ->attach('image','./tests/TestImages/test.png')
 					->press('Submit')
-					->assertPathIs('/public/login')
+					->assertPathIs('/login')
 					->assertSee('Login Required');
 					
         });
@@ -119,7 +119,7 @@ class PostTest extends DuskTestCase
                     ->type('title','Test Title')
                     ->attach('image','./tests/TestImages/test.png')
 					->press('Submit')
-					->assertPathIs('/public/posts')
+					->assertPathIs('/posts')
 					->assertSee('Post Created');
 					
         });
