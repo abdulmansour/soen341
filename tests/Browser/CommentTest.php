@@ -55,7 +55,7 @@ class CommentTest extends DuskTestCase
 					->visit('/posts/1') // go to the post's page
 					->assertSee('REPLY') // assert that user has access to reply to the comment
 					->press('REPLY') // press on reply
-					->type('message','Test reply') // type a reply
+					->keys('textarea[required="required"]','Test reply') // type a reply
 					->press('REPLY') // submit the comment form
 					->assertSee('Test reply'); // assert that the comment has been posted
 					
@@ -77,8 +77,6 @@ class CommentTest extends DuskTestCase
 					->type('password','password') // type in user password
 					->press('Login') // press login button
 					->visit('/posts/1') // go to the post's page
-					->type('message','Test comment') // type a comment
-					->press('SUBMIT') // submit the comment form
 					->assertSee('EDIT') // assert that the poster has access to edit the comment
 					->press('EDIT') // press on edit
 					->type('message','Edited comment') // edit the comment
