@@ -58,7 +58,7 @@ class PostTest extends DuskTestCase
 			
             $browser->visit('/posts/create')
                     ->type('title','Test title')
-                    ->attach('image','./tests/testimages/test.png')
+                    ->attach('image','./tests/TestImages/test.png')
 					->press('Submit')
 					->assertSee('The body field is required.');
 					
@@ -74,7 +74,7 @@ class PostTest extends DuskTestCase
 			
             $browser->visit('/posts/create')
                     ->type('body','Test body')
-                    ->attach('image','./tests/testimages/test.png')
+                    ->attach('image','./tests/TestImages/test.png')
 					->press('Submit')
 					->assertSee('The title field is required.');
 					
@@ -91,7 +91,7 @@ class PostTest extends DuskTestCase
             $browser->visit('/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
-                    ->attach('image','./tests/testimages/test.png')
+                    ->attach('image','./tests/TestImages/test.png')
 					->press('Submit')
 					->assertPathIs('/public/login')
 					->assertSee('Login Required');
@@ -117,7 +117,7 @@ class PostTest extends DuskTestCase
 					->visit('/posts/create')
                     ->type('body','Test body')
                     ->type('title','Test Title')
-                    ->attach('image','./tests/testimages/test.png')
+                    ->attach('image','./tests/TestImages/test.png')
 					->press('Submit')
 					->assertPathIs('/public/posts')
 					->assertSee('Post Created');
