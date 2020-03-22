@@ -57,7 +57,7 @@ class CommentTest extends DuskTestCase
 					->press('REPLY') // press on reply
 					->pause(5000)
 					->type('#replytextarea','Test reply') // type a reply
-					->press('REPLY') // submit the comment form
+					->press('#replysubmit') // submit the comment form
 					->assertSee('Test reply'); // assert that the comment has been posted
 					
         });
@@ -98,7 +98,7 @@ class CommentTest extends DuskTestCase
 			
             $browser->visit('/posts/1') // go to the post's page
 					->assertSee('DELETE') // assert that the poster has access to delete the comment
-					->clickLink('') // press on delete
+					->clickLink('Delete') // press on delete
 					->assertDontSee('Edited comment'); // assert that the comment has been correctly deleted
 					
         });

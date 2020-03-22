@@ -78,7 +78,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Reply</button>
+                                <button id="replysubmit" type="submit" class="btn btn-sm btn-outline-success text-uppercase">Reply</button>
                             </div>
                         </form>
                     </div>
