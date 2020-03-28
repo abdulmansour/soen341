@@ -2,8 +2,8 @@
     <div class="container">
 
         @if(Auth::user())
-            <a class="navbar-brand" href="/soen341/public/user/{{Auth::user()->id}}">
-                 Master
+            <a class="navbar-brand" href="/soen341/public/posts/">
+                 Instagram
             </a>
         @else
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -22,17 +22,15 @@
                     <a class="nav-link" href="/soen341/public/posts/">Posts<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/soen341/public/feed/">Feed</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/soen341/public/profile/">Profile</a>
                 </li>
-
                 @if(Auth::user())
                 <li class="nav-item">
                     <a class="nav-link" href="/soen341/public/users/">Users</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/soen341/public/feed/">Feed</a>
-                </li>
-
                 @endif
 
             </ul>

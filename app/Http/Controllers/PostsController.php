@@ -19,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderby('created_at', 'desc')->paginate(10);
+        $posts = Post::orderby('created_at', 'desc')->paginate(4);
         //generate keyword to search image
         $keywords = ""; 
         foreach($posts as $post) {
