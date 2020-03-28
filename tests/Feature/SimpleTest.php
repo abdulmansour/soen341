@@ -151,4 +151,15 @@ class SimpleTest extends TestCase
 			return Hash::check($notification->token,$token->token)===true;
 		});
 	}
+	
+	/*
+	*
+	* Ensure that we can access the create post page
+	*
+	*/
+	public function testCanAccessPostPage()
+	{
+		$this->get('/posts/create') //get request the create post page
+			 ->assertViewIs('posts.create'); //ensure that we are on the correct page
+	}
 }
