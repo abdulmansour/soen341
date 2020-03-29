@@ -9,16 +9,6 @@ use Tests\DuskTestCase;
 
 class FollowTest extends DuskTestCase
 {
-    /**
-     * Ensures we cant access users page if we are not logged in
-     */
-    public function testCantAccessUsersPage()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/users') // attempt going to user page
-                    ->assertCantSee('Registered Users:'); // assert that we are not on users page
-        });
-    }
 	
     /**
      * Ensures we can access users page if we are logged in
