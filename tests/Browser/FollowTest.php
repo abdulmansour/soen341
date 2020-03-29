@@ -54,7 +54,7 @@ class FollowTest extends DuskTestCase
 					->press('Login') // press login button
 					->visit('/users') // go to users page
                     ->assertSee('Registered Users:') // assert that we are on users page
-					->assertCantSee('1') // assert that all following and followers counters are at 0
+					->assertDontSee('1') // assert that all following and followers counters are at 0
 					->press('Follow') // press the first follow button
 					->assertSee('1'); // assert that counters have incremented
         });
@@ -63,11 +63,11 @@ class FollowTest extends DuskTestCase
     /**
      * Ensures that once we follow another user we can see their posts in the feed
      */
-    public function testAccessUsersPage()
+    public function testSeeFollowedPost()
     {
         $this->browse(function (Browser $browser){
             $browser->visit('/login') // go to login page
-					->type('email',$user->email) // type in user email into email field
+					->type('email','follow@follow.com') // type in user email into email field
 					->type('password','password') // type in user password into password field;
 					->press('Login') // press login button
 					->visit('/feed') // go to feed
