@@ -17,6 +17,7 @@ install:
 before_script:
   - mysql -e 'create database laravel;'
   - php artisan dusk:chrome-driver
+  - php artisan dusk:update
   - php artisan key:generate
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
