@@ -15,10 +15,14 @@ class LikeTest extends DuskTestCase
     public function testLike()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/feed') // go to feed
-                    ->assertSeeIn('.ml-1.badge.badge-light','0') // assert that the like count on the first post in the feed is set to 0
-					->press('.fa.fa-thumbs-up.btn.btn-primary.btn-sm') // press the like button
-                    ->assertSeeIn('.ml-1.badge.badge-light','1'); // assert that the like count is set to 1
+            $browser->visit('/login') // go to login page
+					->type('email','follow@follow.com') // type in user email into email field
+					->type('password','password') // type in user password into password field;
+					->press('Login') // press login button
+					->visit('/feed') // go to feed
+                    ->assertSeeIn('span.ml-1.badge.badge-light','0') // assert that the like count on the first post in the feed is set to 0
+					->press('button.fa.fa-thumbs-up.btn.btn-primary.btn-sm') // press the like button
+                    ->assertSeeIn('span.ml-1.badge.badge-light','1'); // assert that the like count is set to 1
         });
     }
 }
