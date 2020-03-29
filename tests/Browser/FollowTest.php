@@ -52,7 +52,7 @@ class FollowTest extends DuskTestCase
     public function testFollowCount()
     {
 		$user = factory(User::class)->create([ // Create an user 1
-			'email' => 'follow@follow.com' // with specific email "follow@follow.com"
+			'email' => 'follow@follow.com', // with specific email "follow@follow.com"
             'password' => bcrypt('password') // with specific password "password"
         ]);
 		
