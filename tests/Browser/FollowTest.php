@@ -25,12 +25,12 @@ class FollowTest extends DuskTestCase
      */
     public function testCanAccessUsersPage()
     {
-		$user0 = User::first();
+		$user = User::first();
 		
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/login') // go to login page
                     ->assertSee('Login') // assert that we are on login page
-					->type('email',$user0->email) // type in user email into email field
+					->type('email',$user->email) // type in user email into email field
 					->type('password','password') // type in user password into password field;
 					->press('Login') // press login button
 					->visit('/users') // go to users page
