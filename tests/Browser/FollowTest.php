@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
@@ -74,7 +75,7 @@ class FollowTest extends DuskTestCase
      */
     public function testAccessUsersPage()
     {
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser){
             $browser->visit('/feed') // go to feed
 					->assertSee('Feed from users you are following:') // assert we are on the feed
 					->assertSee('Follow title'); // assert the user can see the post of the followed user
