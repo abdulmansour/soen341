@@ -49,7 +49,7 @@ class FollowTest extends DuskTestCase
 		
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/login') // go to login page
-					->type('email',$user0->email) // type in user email into email field
+					->type('email',$user->email) // type in user email into email field
 					->type('password','password') // type in user password into password field;
 					->press('Login') // press login button
 					->visit('/users') // go to users page
@@ -66,7 +66,11 @@ class FollowTest extends DuskTestCase
     public function testAccessUsersPage()
     {
         $this->browse(function (Browser $browser){
-            $browser->visit('/feed') // go to feed
+            $browser->visit('/login') // go to login page
+					->type('email',$user->email) // type in user email into email field
+					->type('password','password') // type in user password into password field;
+					->press('Login') // press login button
+					->visit('/feed') // go to feed
 					->assertSee('Feed from users you are following:') // assert we are on the feed
 					->assertSee('Follow title'); // assert the user can see the post of the followed user
         });
