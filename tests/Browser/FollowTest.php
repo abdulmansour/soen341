@@ -66,11 +66,7 @@ class FollowTest extends DuskTestCase
     public function testSeeFollowedPost()
     {
         $this->browse(function (Browser $browser){
-            $browser->visit('/login') // go to login page
-					->type('email','follow@follow.com') // type in user email into email field
-					->type('password','password') // type in user password into password field;
-					->press('Login') // press login button
-					->visit('/feed') // go to feed
+            $browser->visit('/feed') // go to feed
 					->assertSee('Feed from users you are following:') // assert we are on the feed
 					->assertSee('Follow title'); // assert the user can see the post of the followed user
         });
