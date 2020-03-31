@@ -19,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderby('created_at', 'desc')->paginate(4);
+        $posts = Post::orderby('created_at', 'desc')->paginate(10);
         //generate keyword to search image
         $keywords = ""; 
         foreach($posts as $post) {
@@ -59,13 +59,15 @@ class PostsController extends Controller
             
             $ads = Search::photos($search, $page, $per_page);
             $results = $ads->getResults();
-            $ad = $results[rand(0,$per_page-1)];
-            $ad_description = $ad['description'];
-            $ad_image_url = $ad['urls']['small'];
+            if (sizeof($results) > 0) {
+                $ad = $results[rand(0,sizeof($results)-1)];
+                $ad_description = $ad['description'];
+                $ad_image_url = $ad['urls']['small'];
 
-            $post->ad_search_word = $most_frequent;
-            $post->ad_description = $ad_description;
-            $post->ad_image_url = $ad_image_url;
+                $post->ad_search_word = $most_frequent;
+                $post->ad_description = $ad_description;
+                $post->ad_image_url = $ad_image_url;
+            }
         }
 
         return view('posts.index')->with('posts', $posts);
