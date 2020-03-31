@@ -24,4 +24,8 @@ before_script:
   
 script:
   - vendor/bin/phpunit
-  - php artisan dusk
+  - php artisan dusk tests/Browser/AdsTest.php
+  - php artisan dusk tests/Browser/CommentTest.php
+  - php artisan dusk tests/Browser/FollowTest.php
+  - php artisan dusk tests/Browser/LikeTest.php
+  - php artisan dusk tests/Browser/PostTest.php
