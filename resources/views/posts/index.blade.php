@@ -27,7 +27,7 @@
                         <div class="col">
                             <div class="card" style="width: 25rem">
                                 <div class="card-header">
-                                    <h3 class="card-title">
+                                    <h3 class="card-title ad-title">
                                         {{$post->ad_search_word}}
                                     </h3>
                                 </div>
