@@ -83,7 +83,9 @@ Users have the option to like/unlike posts of other users:
 ![like_post_in_feed](https://user-images.githubusercontent.com/48803193/78804305-fa01e800-798d-11ea-9af9-8fbaba48d390.png)
 
 US-06: Create a list of ads based on the most frequently used words in the Posts
+
 Users will see targeted adds based on their posts descriptions.
+
 ![posts_+_ads](https://user-images.githubusercontent.com/48803193/78804512-35041b80-798e-11ea-8b3b-498ddcaa6d4e.png)
 
 ![pagination](https://user-images.githubusercontent.com/48803193/78804851-a8a62880-798e-11ea-937e-42a4a301a027.png)
